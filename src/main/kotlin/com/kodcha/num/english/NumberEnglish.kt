@@ -1,4 +1,6 @@
-enum class NumberWords(val value: Int, val english: String) {
+package com.kodcha.num.english
+
+enum class NumberEnglish(val value: Int, val english: String) {
     ZERO(0, "ZERO"),
     ONE (1, "ONE"),
     TWO(2, "TWO"),
