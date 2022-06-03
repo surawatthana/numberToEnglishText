@@ -2,7 +2,7 @@ package com.kodcha.num.english
 
 import java.util.*
 
-class NumberToEnglishEngine(val input: Long) {
+class NumberToGermanEngine(val input: Long) {
 
     private val SPACE = " "
     private val EMPTY = ""
@@ -29,7 +29,7 @@ class NumberToEnglishEngine(val input: Long) {
         when (charList.size % 3) {
             0 -> { // hundreds
                 if (charList[0].toString() != "0") {
-                    stringBuilder.append(single(charList[0].toString(), true) + SPACE + NumberEnglish.HUNDRED.toString()
+                    stringBuilder.append(single(charList[0].toString(), true) + SPACE + NumberEnglish.HUNDRED.english
                         .lowercase(Locale.getDefault()) + SPACE)
                 }
                 charList.removeFirst()
@@ -65,10 +65,10 @@ class NumberToEnglishEngine(val input: Long) {
 
     private fun determinePowerOfThousand(size: Int) : String{
         return when(size) {
-            3, 4 -> NumberEnglish.THOUSAND.toString().lowercase(Locale.getDefault())
-            6, 7 -> NumberEnglish.MILLION.toString().lowercase(Locale.getDefault())
-            9, 10 -> NumberEnglish.BILLION.toString().lowercase(Locale.getDefault())
-            12, 13 -> NumberEnglish.TRILLION.toString().lowercase(Locale.getDefault())
+            3, 4 -> NumberEnglish.THOUSAND.english.lowercase(Locale.getDefault())
+            6, 7 -> NumberEnglish.MILLION.english.lowercase(Locale.getDefault())
+            9, 10 -> NumberEnglish.BILLION.english.lowercase(Locale.getDefault())
+            12, 13 -> NumberEnglish.TRILLION.english.lowercase(Locale.getDefault())
             else -> ""
         }
     }
@@ -76,16 +76,16 @@ class NumberToEnglishEngine(val input: Long) {
     private fun single(value : String, noNeedZero: Boolean) : String {
         if (value.length == 1) {
             return when (value) {
-                "0" -> if(noNeedZero) "" else NumberEnglish.ZERO.toString().lowercase(Locale.getDefault())
-                "1" -> NumberEnglish.ONE.toString().lowercase(Locale.getDefault())
-                "2" -> NumberEnglish.TWO.toString().lowercase(Locale.getDefault())
-                "3" -> NumberEnglish.THREE.toString().lowercase(Locale.getDefault())
-                "4" -> NumberEnglish.FOUR.toString().lowercase(Locale.getDefault())
-                "5" -> NumberEnglish.FIVE.toString().lowercase(Locale.getDefault())
-                "6" -> NumberEnglish.SIX.toString().lowercase(Locale.getDefault())
-                "7" -> NumberEnglish.SEVEN.toString().lowercase(Locale.getDefault())
-                "8" -> NumberEnglish.EIGHT.toString().lowercase(Locale.getDefault())
-                "9" -> NumberEnglish.NINE.toString().lowercase(Locale.getDefault())
+                "0" -> if(noNeedZero) "" else NumberEnglish.ZERO.english.lowercase(Locale.getDefault())
+                "1" -> NumberEnglish.ONE.english.lowercase(Locale.getDefault())
+                "2" -> NumberEnglish.TWO.english.lowercase(Locale.getDefault())
+                "3" -> NumberEnglish.THREE.english.lowercase(Locale.getDefault())
+                "4" -> NumberEnglish.FOUR.english.lowercase(Locale.getDefault())
+                "5" -> NumberEnglish.FIVE.english.lowercase(Locale.getDefault())
+                "6" -> NumberEnglish.SIX.english.lowercase(Locale.getDefault())
+                "7" -> NumberEnglish.SEVEN.english.lowercase(Locale.getDefault())
+                "8" -> NumberEnglish.EIGHT.english.lowercase(Locale.getDefault())
+                "9" -> NumberEnglish.NINE.english.lowercase(Locale.getDefault())
                 else -> EMPTY
             }
         }
@@ -100,26 +100,26 @@ class NumberToEnglishEngine(val input: Long) {
                 "0" -> return single(value.substring(1), true)
                 "1" -> {
                     when(Integer.valueOf(value)){
-                        10 -> return NumberEnglish.TEN.toString().lowercase(Locale.getDefault())
-                        11 -> return NumberEnglish.ELEVEN.toString().lowercase(Locale.getDefault())
-                        12 -> return NumberEnglish.TWELVE.toString().lowercase(Locale.getDefault())
-                        13 -> return NumberEnglish.THIRTEEN.toString().lowercase(Locale.getDefault())
-                        14 -> return NumberEnglish.FOURTEEN.toString().lowercase(Locale.getDefault())
-                        15 -> return NumberEnglish.FIFTEEN.toString().lowercase(Locale.getDefault())
-                        16 -> return NumberEnglish.SIXTEEN.toString().lowercase(Locale.getDefault())
-                        17 -> return NumberEnglish.SEVENTEEN.toString().lowercase(Locale.getDefault())
-                        18 -> return NumberEnglish.EIGHTEEN.toString().lowercase(Locale.getDefault())
-                        19 -> return NumberEnglish.NINETEEN.toString().lowercase(Locale.getDefault())
+                        10 -> return NumberEnglish.TEN.english.lowercase(Locale.getDefault())
+                        11 -> return NumberEnglish.ELEVEN.english.lowercase(Locale.getDefault())
+                        12 -> return NumberEnglish.TWELVE.english.lowercase(Locale.getDefault())
+                        13 -> return NumberEnglish.THIRTEEN.english.lowercase(Locale.getDefault())
+                        14 -> return NumberEnglish.FOURTEEN.english.lowercase(Locale.getDefault())
+                        15 -> return NumberEnglish.FIFTEEN.english.lowercase(Locale.getDefault())
+                        16 -> return NumberEnglish.SIXTEEN.english.lowercase(Locale.getDefault())
+                        17 -> return NumberEnglish.SEVENTEEN.english.lowercase(Locale.getDefault())
+                        18 -> return NumberEnglish.EIGHTEEN.english.lowercase(Locale.getDefault())
+                        19 -> return NumberEnglish.NINETEEN.english.lowercase(Locale.getDefault())
                     }
                 }
-                "2" -> prefix = NumberEnglish.TWENTY.toString().lowercase(Locale.getDefault())
-                "3" -> prefix = NumberEnglish.THIRTY.toString().lowercase(Locale.getDefault())
-                "4" -> prefix = NumberEnglish.FORTY.toString().lowercase(Locale.getDefault())
-                "5" -> prefix = NumberEnglish.FIFTY.toString().lowercase(Locale.getDefault())
-                "6" -> prefix = NumberEnglish.SIXTY.toString().lowercase(Locale.getDefault())
-                "7" -> prefix = NumberEnglish.SEVENTY.toString().lowercase(Locale.getDefault())
-                "8" -> prefix = NumberEnglish.EIGHTY.toString().lowercase(Locale.getDefault())
-                "9" -> prefix = NumberEnglish.NINETY.toString().lowercase(Locale.getDefault())
+                "2" -> prefix = NumberEnglish.TWENTY.english.lowercase(Locale.getDefault())
+                "3" -> prefix = NumberEnglish.THIRTY.english.lowercase(Locale.getDefault())
+                "4" -> prefix = NumberEnglish.FORTY.english.lowercase(Locale.getDefault())
+                "5" -> prefix = NumberEnglish.FIFTY.english.lowercase(Locale.getDefault())
+                "6" -> prefix = NumberEnglish.SIXTY.english.lowercase(Locale.getDefault())
+                "7" -> prefix = NumberEnglish.SEVENTY.english.lowercase(Locale.getDefault())
+                "8" -> prefix = NumberEnglish.EIGHTY.english.lowercase(Locale.getDefault())
+                "9" -> prefix = NumberEnglish.NINETY.english.lowercase(Locale.getDefault())
             }
 
             suffix = if ("0" == value.substring(1))  EMPTY else single(value.substring(1), true)
