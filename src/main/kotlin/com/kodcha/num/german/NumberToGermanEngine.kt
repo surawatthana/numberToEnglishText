@@ -31,16 +31,16 @@ class NumberToGermanEngine(val input: Long) {
     private fun single(value : String, noNeedZero: Boolean) : String {
         if (value.length == 1) {
             return when (value) {
-                "0" -> if(noNeedZero) "" else NumberEnglish.ZERO.english.lowercase(Locale.getDefault())
-                "1" -> NumberEnglish.ONE.english.lowercase(Locale.getDefault())
-                "2" -> NumberEnglish.TWO.english.lowercase(Locale.getDefault())
-                "3" -> NumberEnglish.THREE.english.lowercase(Locale.getDefault())
-                "4" -> NumberEnglish.FOUR.english.lowercase(Locale.getDefault())
-                "5" -> NumberEnglish.FIVE.english.lowercase(Locale.getDefault())
-                "6" -> NumberEnglish.SIX.english.lowercase(Locale.getDefault())
-                "7" -> NumberEnglish.SEVEN.english.lowercase(Locale.getDefault())
-                "8" -> NumberEnglish.EIGHT.english.lowercase(Locale.getDefault())
-                "9" -> NumberEnglish.NINE.english.lowercase(Locale.getDefault())
+                "0" -> if(noNeedZero) "" else NumberGerman.ZERO.german.lowercase(Locale.getDefault())
+                "1" -> NumberGerman.ONE.german.lowercase(Locale.getDefault())
+                "2" -> NumberGerman.TWO.german.lowercase(Locale.getDefault())
+                "3" -> NumberGerman.THREE.german.lowercase(Locale.getDefault())
+                "4" -> NumberGerman.FOUR.german.lowercase(Locale.getDefault())
+                "5" -> NumberGerman.FIVE.german.lowercase(Locale.getDefault())
+                "6" -> NumberGerman.SIX.german.lowercase(Locale.getDefault())
+                "7" -> NumberGerman.SEVEN.german.lowercase(Locale.getDefault())
+                "8" -> NumberGerman.EIGHT.german.lowercase(Locale.getDefault())
+                "9" -> NumberGerman.NINE.german.lowercase(Locale.getDefault())
                 else -> EMPTY
             }
         }

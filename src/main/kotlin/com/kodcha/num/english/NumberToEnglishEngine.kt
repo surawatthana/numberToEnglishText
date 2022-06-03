@@ -2,7 +2,7 @@ package com.kodcha.num.english
 
 import java.util.*
 
-class NumberToGermanEngine(val input: Long) {
+class NumberToEnglishEngine(val input: Long) {
 
     private val SPACE = " "
     private val EMPTY = ""

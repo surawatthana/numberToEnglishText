@@ -1,6 +1,6 @@
 package com.kodcha.num.german
 
-import com.kodcha.num.english.NumberToGermanEngine
+import com.kodcha.num.german.NumberToGermanEngine
 import org.junit.jupiter.api.Assertions
 import org.junit.jupiter.api.Test
 
