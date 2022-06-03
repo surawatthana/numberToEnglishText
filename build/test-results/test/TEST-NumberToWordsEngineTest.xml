@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="NumberToWordsEngineTest" tests="18" skipped="0" failures="0" errors="0" timestamp="2022-06-03T03:54:29" hostname="Suras-Mac-mini.local" time="0.036">
+  <properties/>
+  <testcase name="tenToNineteen()" classname="NumberToWordsEngineTest" time="0.012"/>
+  <testcase name="ninetyToNinetyNine()" classname="NumberToWordsEngineTest" time="0.004"/>
+  <testcase name="millions()" classname="NumberToWordsEngineTest" time="0.006"/>
+  <testcase name="zeroToNine()" classname="NumberToWordsEngineTest" time="0.0"/>
+  <testcase name="oneHundredToNineHundred()" classname="NumberToWordsEngineTest" time="0.002"/>
+  <testcase name="tenThousands()" classname="NumberToWordsEngineTest" time="0.0"/>
+  <testcase name="eightyToEightyNine()" classname="NumberToWordsEngineTest" time="0.001"/>
+  <testcase name="sixtyToSixtyNine()" classname="NumberToWordsEngineTest" time="0.002"/>
+  <testcase name="fortyToFortyNine()" classname="NumberToWordsEngineTest" time="0.001"/>
+  <testcase name="trillions()" classname="NumberToWordsEngineTest" time="0.0"/>
+  <testcase name="thirtyToThirtyNine()" classname="NumberToWordsEngineTest" time="0.001"/>
+  <testcase name="twentyToTwentyNine()" classname="NumberToWordsEngineTest" time="0.0"/>
+  <testcase name="hundredThousands()" classname="NumberToWordsEngineTest" time="0.001"/>
+  <testcase name="thousands()" classname="NumberToWordsEngineTest" time="0.0"/>
+  <testcase name="seventyToSeventyNine()" classname="NumberToWordsEngineTest" time="0.002"/>
+  <testcase name="billions()" classname="NumberToWordsEngineTest" time="0.001"/>
+  <testcase name="fiftyToFiftyNine()" classname="NumberToWordsEngineTest" time="0.0"/>
+  <testcase name="zeroToNineWithLeadingZero()" classname="NumberToWordsEngineTest" time="0.001"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
