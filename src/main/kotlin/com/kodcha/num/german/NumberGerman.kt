@@ -15,7 +15,7 @@ enum class NumberGerman(val value: Int, val german: String) {
     ELEVEN(11,"elf"),
     TWELVE(12,"zwölf"),
     TWENTY(20,"Zwanzig"),
-    THIRTY(30,"Dreiβig"),
+    THIRTY(30,"Dreißig"),
     THOUSAND(1_000,"Tausend"),
     MILLION(1_000_000,"Million"),
     BILLION(1_000_000_000,"Milliarde"),

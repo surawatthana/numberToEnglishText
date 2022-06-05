@@ -1,6 +1,5 @@
 package com.kodcha.num.german
 
-import com.kodcha.num.english.NumberEnglish
 import java.util.*
 
 class NumberToGermanEngine(val input: Long) {
@@ -15,7 +14,7 @@ class NumberToGermanEngine(val input: Long) {
 
     internal fun numberToWords() : String{
         stringBuilder = StringBuilder()
-        var mutableListChar: MutableList<Char> = mutableListOf<Char>()
+        val mutableListChar: MutableList<Char> = mutableListOf<Char>()
         input.toString().toCharArray().forEach { a -> mutableListChar.add(a) }
         return numToWords(mutableListChar)
     }
@@ -41,17 +40,34 @@ class NumberToGermanEngine(val input: Long) {
             }
             1 -> {// power of thousand
                 if (charList[0].toString() != "0") {
-                    stringBuilder.append(single(charList[0].toString(),
-                        true) + SPACE + determinePowerOfThousand(charList.size, Integer.valueOf(charList[0].toString())) + SPACE)
+                    var single = single(charList[0].toString(), true)
+                    if (single == "eins"){
+                        single = "ein"
+                    }
+                    stringBuilder.append(single + determinePowerOfThousand(charList.size, Integer.valueOf(charList[0].toString())))
                 }
                 charList.removeFirst()
                 return numToWords(charList)
             }
-
+            2 -> {// tens
+                val input = charList[0] + "" + charList[1]
+                val intInput = input.toInt()
+                if (tens(input) != EMPTY) {
+                    stringBuilder.append(tens(input) + SPACE)
+                }
+                charList.removeFirst()
+                charList.removeFirst()
+                if (charList.size > 2 && !endsWithPowerOfThousands(stringBuilder.toString())) {
+                    stringBuilder.append(determinePowerOfThousand(charList.size, intInput) + SPACE)
+                }
+                return numToWords(charList)
+            }
             else -> return EMPTY
         }
+    }
 
-        return EMPTY
+    private fun endsWithPowerOfThousands(input: String): Boolean {
+        return (input.trim().endsWith(NumberGerman.THOUSAND.german) || input.trim().endsWith(NumberGerman.MILLION.german) || input.trim().endsWith(NumberGerman.MILLION.german+"en") || input.trim().endsWith(NumberGerman.BILLION.german) || input.trim().endsWith(NumberGerman.BILLION.german + "n") || input.trim().endsWith(NumberGerman.TRILLION.german) || input.trim().endsWith(NumberGerman.TRILLION.german + "en"))
     }
 
     private fun single(value : String, noNeedZero: Boolean) : String {
@@ -74,8 +90,8 @@ class NumberToGermanEngine(val input: Long) {
     }
 
     private fun tens(value: String) : String {
-        var prefix = EMPTY
-        var suffix = EMPTY
+//        var prefix = EMPTY
+//        var suffix = EMPTY
 
         if (value.length == 2){
             when(value.substring(0, 1)){
@@ -104,7 +120,7 @@ class NumberToGermanEngine(val input: Long) {
                         20 -> return NumberGerman.TWENTY.german.lowercase(Locale.getDefault())
                         21 -> return NumberGerman.ONE.german.replace("s", "").lowercase(Locale.getDefault()) + AND + NumberGerman.TWENTY.german.lowercase(Locale.getDefault())
                         else -> {
-                            var prefix = single(value.substring(1), true)
+                            val prefix = single(value.substring(1), true)
                             var result =  prefix + AND + getTy(value)
                             if (result.startsWith(AND)) {
                                 result = result.replace(AND, EMPTY)
@@ -123,12 +139,11 @@ class NumberToGermanEngine(val input: Long) {
     }
 
     private fun getTy(prefix: String) : String {
-        var prefix = prefix.substring(0, 1)
         when (prefix) {
             "2" -> return NumberGerman.TWENTY.german.lowercase(Locale.getDefault())
             "3" -> return NumberGerman.THIRTY.german.lowercase(Locale.getDefault())
             else -> {
-                var single = single(prefix, true)
+                var single = single(prefix.substring(0, 1), true)
                 if (single.endsWith("s")) {
                     single = single.substring(0, single.length - 1)
                 } else if (single.endsWith("en")) {
@@ -137,13 +152,11 @@ class NumberToGermanEngine(val input: Long) {
                 return single + TY
             }
         }
-        return EMPTY
     }
 
     private fun hundreds(value: Char) : String {
         return when (value) {
             '1' -> "einhundert"
-            '2' -> "zweihundert"
             else -> {
                 single(value+"", true) + HUNDRED
             }
