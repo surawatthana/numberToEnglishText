@@ -5,8 +5,12 @@ import java.util.*
 
 class NumberToGermanEngine(val input: Long) {
 
-    private val SPACE = " "
+    private val AND = "und"
     private val EMPTY = ""
+    private val TY = "zig"
+    private val HUNDRED = "hundert"
+    private val EN = "en"
+    private val SPACE = " "
     private var stringBuilder = StringBuilder()
 
     internal fun numberToWords() : String{
@@ -21,12 +25,34 @@ class NumberToGermanEngine(val input: Long) {
             return stringBuilder.append(single(charList[0].toString(), false)).toString().lowercase(Locale.getDefault())
                 .trim()
         }
-        
-        
-        
+
+        if (charList.size == 2) {
+            return stringBuilder.append(tens(charList[0].toString() + charList[1].toString())).toString()
+                .lowercase(Locale.getDefault()).trim()
+        }
+
+        when (charList.size % 3) {
+            0 -> { // hundreds
+                if (charList[0] != '0') {
+                    stringBuilder.append(hundreds(charList[0]))
+                }
+                charList.removeFirst()
+                return numToWords(charList)
+            }
+            1 -> {// power of thousand
+                if (charList[0].toString() != "0") {
+                    stringBuilder.append(single(charList[0].toString(),
+                        true) + SPACE + determinePowerOfThousand(charList.size, Integer.valueOf(charList[0].toString())) + SPACE)
+                }
+                charList.removeFirst()
+                return numToWords(charList)
+            }
+
+            else -> return EMPTY
+        }
+
         return EMPTY
     }
-
 
     private fun single(value : String, noNeedZero: Boolean) : String {
         if (value.length == 1) {
@@ -45,5 +71,109 @@ class NumberToGermanEngine(val input: Long) {
             }
         }
         return EMPTY
+    }
+
+    private fun tens(value: String) : String {
+        var prefix = EMPTY
+        var suffix = EMPTY
+
+        if (value.length == 2){
+            when(value.substring(0, 1)){
+                "0" -> return single(value.substring(1), true)
+                "1" -> {
+                    when(Integer.valueOf(value)) {
+                        10 -> return NumberGerman.TEN.german.lowercase(Locale.getDefault())
+                        11 -> return NumberGerman.ELEVEN.german.lowercase(Locale.getDefault())
+                        12 -> return NumberGerman.TWELVE.german.lowercase(Locale.getDefault())
+                        else -> {
+
+                            var prefix = single(value.substring(1), true)
+
+                            if (prefix.endsWith("s")) {
+                                prefix = prefix.substring(0, prefix.length - 1)
+                            } else if (prefix.endsWith("en")) {
+                                prefix = prefix.replace("en", "")
+                            }
+
+                            return prefix + NumberGerman.TEN.german.lowercase(Locale.getDefault())
+                        }
+                    }
+                }
+                else -> {
+                    when(Integer.valueOf(value)) {
+                        20 -> return NumberGerman.TWENTY.german.lowercase(Locale.getDefault())
+                        21 -> return NumberGerman.ONE.german.replace("s", "").lowercase(Locale.getDefault()) + AND + NumberGerman.TWENTY.german.lowercase(Locale.getDefault())
+                        else -> {
+                            var prefix = single(value.substring(1), true)
+                            var result =  prefix + AND + getTy(value)
+                            if (result.startsWith(AND)) {
+                                result = result.replace(AND, EMPTY)
+                            }
+                            if (result.startsWith(NumberGerman.ONE.german+AND)) {
+                                result = result.replace(NumberGerman.ONE.german+AND,"ein"+AND)
+                            }
+                            return result
+                        }
+                    }
+                }
+            }
+        }
+
+        return EMPTY
+    }
+
+    private fun getTy(prefix: String) : String {
+        var prefix = prefix.substring(0, 1)
+        when (prefix) {
+            "2" -> return NumberGerman.TWENTY.german.lowercase(Locale.getDefault())
+            "3" -> return NumberGerman.THIRTY.german.lowercase(Locale.getDefault())
+            else -> {
+                var single = single(prefix, true)
+                if (single.endsWith("s")) {
+                    single = single.substring(0, single.length - 1)
+                } else if (single.endsWith("en")) {
+                    single = single.replace("en", "")
+                }
+                return single + TY
+            }
+        }
+        return EMPTY
+    }
+
+    private fun hundreds(value: Char) : String {
+        return when (value) {
+            '1' -> "einhundert"
+            '2' -> "zweihundert"
+            else -> {
+                single(value+"", true) + HUNDRED
+            }
+        }
+    }
+
+    private fun determinePowerOfThousand(size: Int, value: Int) : String {
+        if (size == 3 || size == 4) {
+            return NumberGerman.THOUSAND.german.lowercase(Locale.getDefault())
+        } else if (size == 6 || size == 7) {
+            return if (value > 1) {
+                NumberGerman.MILLION.german.lowercase(Locale.getDefault())
+            } else {
+                NumberGerman.MILLION.german.lowercase(Locale.getDefault())+EN
+            }
+        } else if (size == 9 || size == 10) {
+            return if (value > 1) {
+                NumberGerman.BILLION.german.lowercase(Locale.getDefault())
+            } else {
+                NumberGerman.BILLION.german.lowercase(Locale.getDefault())+"n"
+            }
+        } else if (size == 12 || size == 13) {
+            return if (value > 1) {
+                NumberGerman.TRILLION.german.lowercase(Locale.getDefault())
+            } else {
+                NumberGerman.TRILLION.german.lowercase(Locale.getDefault())+ EN
+            }
+        }
+
+
+        return  EMPTY
     }
 }
