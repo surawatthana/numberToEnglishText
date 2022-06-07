@@ -16,7 +16,15 @@ class NumberToGermanEngine(val input: Long) {
         stringBuilder = StringBuilder()
         val mutableListChar: MutableList<Char> = mutableListOf<Char>()
         input.toString().toCharArray().forEach { a -> mutableListChar.add(a) }
-        return numToWords(mutableListChar)
+        var result =  numToWords(mutableListChar)
+        result = result.replace("ein million", "eine million")
+        result = result.replace("ein milliarde", "eine milliarde")
+        result = result.replace("ein billion", "eine billion")
+        result = result.replace( "million tausend", "million ")
+        result = result.replace( "millionen tausend", "millionen ")
+        result = result.replace( "milliarde tausend", "milliarde ")
+        result = result.replace( "milliarden tausend", "milliarden ")
+        return result.trim()
     }
 
     private fun numToWords(charList: MutableList<Char>): String {
@@ -53,12 +61,12 @@ class NumberToGermanEngine(val input: Long) {
                 val input = charList[0] + "" + charList[1]
                 val intInput = input.toInt()
                 if (tens(input) != EMPTY) {
-                    stringBuilder.append(tens(input) + SPACE)
+                    stringBuilder.append(tens(input))
                 }
                 charList.removeFirst()
                 charList.removeFirst()
                 if (charList.size > 2 && !endsWithPowerOfThousands(stringBuilder.toString())) {
-                    stringBuilder.append(determinePowerOfThousand(charList.size, intInput) + SPACE)
+                    stringBuilder.append(determinePowerOfThousand(charList.size, intInput))
                 }
                 return numToWords(charList)
             }
@@ -67,7 +75,7 @@ class NumberToGermanEngine(val input: Long) {
     }
 
     private fun endsWithPowerOfThousands(input: String): Boolean {
-        return (input.trim().endsWith(NumberGerman.THOUSAND.german) || input.trim().endsWith(NumberGerman.MILLION.german) || input.trim().endsWith(NumberGerman.MILLION.german+"en") || input.trim().endsWith(NumberGerman.BILLION.german) || input.trim().endsWith(NumberGerman.BILLION.german + "n") || input.trim().endsWith(NumberGerman.TRILLION.german) || input.trim().endsWith(NumberGerman.TRILLION.german + "en"))
+        return (input.trim().endsWith(NumberGerman.THOUSAND.german) || input.trim().endsWith(NumberGerman.MILLION.german + SPACE) || input.trim().endsWith(NumberGerman.MILLION.german+"en ") || input.trim().endsWith(NumberGerman.BILLION.german) || input.trim().endsWith(NumberGerman.BILLION.german + "n") || input.trim().endsWith(NumberGerman.TRILLION.german) || input.trim().endsWith(NumberGerman.TRILLION.german + "en"))
     }
 
     private fun single(value : String, noNeedZero: Boolean) : String {
@@ -139,19 +147,21 @@ class NumberToGermanEngine(val input: Long) {
     }
 
     private fun getTy(prefix: String) : String {
-        when (prefix) {
-            "2" -> return NumberGerman.TWENTY.german.lowercase(Locale.getDefault())
-            "3" -> return NumberGerman.THIRTY.german.lowercase(Locale.getDefault())
-            else -> {
-                var single = single(prefix.substring(0, 1), true)
-                if (single.endsWith("s")) {
-                    single = single.substring(0, single.length - 1)
-                } else if (single.endsWith("en")) {
-                    single = single.replace("en", "")
-                }
-                return single + TY
-            }
+
+        if (prefix.startsWith("2")) {
+            return NumberGerman.TWENTY.german.lowercase(Locale.getDefault())
         }
+        if (prefix.startsWith("3")) {
+            return NumberGerman.THIRTY.german.lowercase(Locale.getDefault())
+        }
+
+        var single = single(prefix.substring(0, 1), true)
+        if (single.endsWith("s")) {
+            single = single.substring(0, single.length - 1)
+        } else if (single.endsWith("en")) {
+            single = single.replace("en", "")
+        }
+        return single + TY
     }
 
     private fun hundreds(value: Char) : String {
@@ -164,25 +174,25 @@ class NumberToGermanEngine(val input: Long) {
     }
 
     private fun determinePowerOfThousand(size: Int, value: Int) : String {
-        if (size == 3 || size == 4) {
+        if ((size == 3 || size == 4)) {
             return NumberGerman.THOUSAND.german.lowercase(Locale.getDefault())
-        } else if (size == 6 || size == 7) {
-            return if (value > 1) {
-                NumberGerman.MILLION.german.lowercase(Locale.getDefault())
+        } else if ((size == 6 || size == 7) && value > 0) {
+            return if (value == 1) {
+                SPACE + NumberGerman.MILLION.german.lowercase(Locale.getDefault()) + SPACE
             } else {
-                NumberGerman.MILLION.german.lowercase(Locale.getDefault())+EN
+                SPACE + NumberGerman.MILLION.german.lowercase(Locale.getDefault())+ EN + SPACE
             }
-        } else if (size == 9 || size == 10) {
-            return if (value > 1) {
-                NumberGerman.BILLION.german.lowercase(Locale.getDefault())
+        } else if ((size == 9 || size == 10) && value > 0) {
+            return if (value == 1) {
+                SPACE + NumberGerman.BILLION.german.lowercase(Locale.getDefault()) + SPACE
             } else {
-                NumberGerman.BILLION.german.lowercase(Locale.getDefault())+"n"
+                SPACE + NumberGerman.BILLION.german.lowercase(Locale.getDefault())+"n" + SPACE
             }
-        } else if (size == 12 || size == 13) {
-            return if (value > 1) {
-                NumberGerman.TRILLION.german.lowercase(Locale.getDefault())
+        } else if ((size == 12 || size == 13) && value > 0) {
+            return if (value == 1) {
+                SPACE + NumberGerman.TRILLION.german.lowercase(Locale.getDefault()) + SPACE
             } else {
-                NumberGerman.TRILLION.german.lowercase(Locale.getDefault())+ EN
+                SPACE + NumberGerman.TRILLION.german.lowercase(Locale.getDefault())+ EN + SPACE
             }
         }
 

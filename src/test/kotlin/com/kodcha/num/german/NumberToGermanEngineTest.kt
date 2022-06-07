@@ -65,16 +65,16 @@ class NumberToGermanEngineTest {
 
     @Test
     fun thirtyToThirtyNine() {
-        assertEquals("dreiβig", NumberToGermanEngine(30).numberToWords())
-        assertEquals("einunddreiβig", NumberToGermanEngine(31).numberToWords())
-        assertEquals("zweiunddreiβig", NumberToGermanEngine(32).numberToWords())
-        assertEquals("dreiunddreiβig", NumberToGermanEngine(33).numberToWords())
-        assertEquals("vierunddreiβig", NumberToGermanEngine(34).numberToWords())
-        assertEquals("fünfunddreiβig", NumberToGermanEngine(35).numberToWords())
-        assertEquals("sechsunddreiβig", NumberToGermanEngine(36).numberToWords())
-        assertEquals("siebenunddreiβig", NumberToGermanEngine(37).numberToWords())
-        assertEquals("achtunddreiβig", NumberToGermanEngine(38).numberToWords())
-        assertEquals("neununddreiβig", NumberToGermanEngine(39).numberToWords())
+        assertEquals("dreißig", NumberToGermanEngine(30).numberToWords())
+        assertEquals("einunddreißig", NumberToGermanEngine(31).numberToWords())
+        assertEquals("zweiunddreißig", NumberToGermanEngine(32).numberToWords())
+        assertEquals("dreiunddreißig", NumberToGermanEngine(33).numberToWords())
+        assertEquals("vierunddreißig", NumberToGermanEngine(34).numberToWords())
+        assertEquals("fünfunddreißig", NumberToGermanEngine(35).numberToWords())
+        assertEquals("sechsunddreißig", NumberToGermanEngine(36).numberToWords())
+        assertEquals("siebenunddreißig", NumberToGermanEngine(37).numberToWords())
+        assertEquals("achtunddreißig", NumberToGermanEngine(38).numberToWords())
+        assertEquals("neununddreißig", NumberToGermanEngine(39).numberToWords())
     }
 
     @Test
@@ -239,7 +239,7 @@ class NumberToGermanEngineTest {
         assertEquals("fünfhundertvierundneunzig", NumberToGermanEngine(594).numberToWords())
         assertEquals("dreihundertneunzehn", NumberToGermanEngine(319).numberToWords())
         assertEquals("sechshundertneunundfünfzig", NumberToGermanEngine(659).numberToWords())
-        assertEquals("zweihunderteinunddreiβig", NumberToGermanEngine(231).numberToWords())
+        assertEquals("zweihunderteinunddreißig", NumberToGermanEngine(231).numberToWords())
         assertEquals("dreihundertneunundsechzig", NumberToGermanEngine(369).numberToWords())
         assertEquals("zweihunderteins", NumberToGermanEngine(201).numberToWords())
         assertEquals("vierhundertneunundsiebzig", NumberToGermanEngine(479).numberToWords())
@@ -282,5 +282,104 @@ class NumberToGermanEngineTest {
     @Test
     fun tenThousands() {
         assertEquals("zehntausend", NumberToGermanEngine(10000).numberToWords())
+        assertEquals("zwanzigtausend", NumberToGermanEngine(20000).numberToWords())
+        assertEquals("dreißigtausend", NumberToGermanEngine(30000).numberToWords())
+        assertEquals("vierzigtausend", NumberToGermanEngine(40000).numberToWords())
+        assertEquals("fünfzigtausend", NumberToGermanEngine(50000).numberToWords())
+        assertEquals("sechzigtausend", NumberToGermanEngine(60000).numberToWords())
+        assertEquals("siebzigtausend", NumberToGermanEngine(70000).numberToWords())
+        assertEquals("achtzigtausend", NumberToGermanEngine(80000).numberToWords())
+        assertEquals("neunzigtausend", NumberToGermanEngine(90000).numberToWords())
+
+        assertEquals("elftausendeinhundertelf", NumberToGermanEngine(11111).numberToWords())
+        assertEquals("neunundneunzigtausendneunhundertneunundneunzig", NumberToGermanEngine(99999).numberToWords())
+
+        assertEquals("vierzehntausendachtzig", NumberToGermanEngine(14080).numberToWords())
+        assertEquals("einundzwanzigtausendsechshundertsiebenundsechzig", NumberToGermanEngine(21667).numberToWords())
+        assertEquals("einunddreißigtausenddreihundertneunzehn", NumberToGermanEngine(31319).numberToWords())
+        assertEquals("achtundvierzigtausendvierhundertsechsundfünfzig", NumberToGermanEngine(48456).numberToWords())
+        assertEquals("zweiundfünfzigtausendachthundertsechsunddreißig", NumberToGermanEngine(52836).numberToWords())
+        assertEquals("sechsundsechzigtausendneunhundertvier", NumberToGermanEngine(66904).numberToWords())
+        assertEquals("vierundsiebzigtausendfünfhundertachtundvierzig", NumberToGermanEngine(74548).numberToWords())
+        assertEquals("einundachtzigtausendvierhundertdreizehn", NumberToGermanEngine(81413).numberToWords())
+        assertEquals("achtundneunzigtausendfünfhundertsiebenundzwanzig", NumberToGermanEngine(98527).numberToWords())
+    }
+
+    @Test
+    fun hundredThousands() {
+        assertEquals("einhunderttausend", NumberToGermanEngine(100000).numberToWords())
+        assertEquals("zweihunderttausend", NumberToGermanEngine(200000).numberToWords())
+        assertEquals("dreihunderttausend", NumberToGermanEngine(300000).numberToWords())
+        assertEquals("vierhunderttausend", NumberToGermanEngine(400000).numberToWords())
+        assertEquals("fünfhunderttausend", NumberToGermanEngine(500000).numberToWords())
+        assertEquals("sechshunderttausend", NumberToGermanEngine(600000).numberToWords())
+        assertEquals("siebenhunderttausend", NumberToGermanEngine(700000).numberToWords())
+        assertEquals("achthunderttausend", NumberToGermanEngine(800000).numberToWords())
+        assertEquals("neunhunderttausend", NumberToGermanEngine(900000).numberToWords())
+
+        assertEquals("einhundertelftausendeinhundertelf", NumberToGermanEngine(111111).numberToWords())
+        assertEquals("neunhundertneunundneunzigtausendneunhundertneunundneunzig", NumberToGermanEngine(999999).numberToWords())
+
+        assertEquals("einhundertachtundzwanzigtausendsiebenhundertsiebenundzwanzig", NumberToGermanEngine(128727).numberToWords())
+        assertEquals("zweihundertvierundneunzigtausenddreihundertdreiundneunzig", NumberToGermanEngine(294393).numberToWords())
+        assertEquals("dreihundertsiebenundvierzigtausendachthundertzweiundsechzig", NumberToGermanEngine(347862).numberToWords())
+        assertEquals("vierhundertachtundvierzigtausendsiebenhundertfünf", NumberToGermanEngine(448705).numberToWords())
+        assertEquals("fünfhundertsiebentausendsechsundvierzig", NumberToGermanEngine(507046).numberToWords())
+        assertEquals("sechshundertsechsundsechzigtausendvierundzwanzig", NumberToGermanEngine(666024).numberToWords())
+        assertEquals("siebenhundertvierzigtausendzweiundvierzig", NumberToGermanEngine(740042).numberToWords())
+        assertEquals("achthundertfünfundfünfzigtausendzweihundertvierunddreißig", NumberToGermanEngine(855234).numberToWords())
+        assertEquals("neunhundertsechsundachtzigtausendzweihundertdreiundsiebzig", NumberToGermanEngine(986273).numberToWords())
+        assertEquals("zweihundertvierzigtausendeinhundertzwei", NumberToGermanEngine(240102).numberToWords())
+        assertEquals("achthundertneunundfünfzigtausendzweiundvierzig", NumberToGermanEngine(859042).numberToWords())
+        assertEquals("dreihundertvierzehntausendvierhundertvier", NumberToGermanEngine(314404).numberToWords())
+        assertEquals("einhunderttausendeins", NumberToGermanEngine(100001).numberToWords())
+    }
+
+    @Test
+    fun millions() {
+        assertEquals("eine million", NumberToGermanEngine(1_000_000).numberToWords())
+        assertEquals("zwei millionen", NumberToGermanEngine(2_000_000).numberToWords())
+        assertEquals("drei millionen", NumberToGermanEngine(3_000_000).numberToWords())
+        assertEquals("vier millionen", NumberToGermanEngine(4_000_000).numberToWords())
+        assertEquals("fünf millionen", NumberToGermanEngine(5_000_000).numberToWords())
+        assertEquals("sechs millionen", NumberToGermanEngine(6_000_000).numberToWords())
+        assertEquals("sieben millionen", NumberToGermanEngine(7_000_000).numberToWords())
+        assertEquals("acht millionen", NumberToGermanEngine(8_000_000).numberToWords())
+        assertEquals("neun millionen", NumberToGermanEngine(9_000_000).numberToWords())
+
+        assertEquals("eine million eins", NumberToGermanEngine(1_000_001).numberToWords())
+        assertEquals("eine million elf", NumberToGermanEngine(1_000_011).numberToWords())
+        assertEquals("eine million einhundertelf", NumberToGermanEngine(1_000_111).numberToWords())
+        assertEquals("eine million einstausendeinhundertelf", NumberToGermanEngine(1_001_111).numberToWords())
+        assertEquals("eine million elftausendeinhundertelf", NumberToGermanEngine(1_011_111).numberToWords())
+        assertEquals("eine million einhundertelftausendeinhundertelf", NumberToGermanEngine(1_111_111).numberToWords())
+
+        assertEquals("neun millionen neunhundertneunundneunzigtausendneunhundertneunundneunzig", NumberToGermanEngine(9_999_999).numberToWords())
+    }
+
+    @Test
+    fun billions() {
+        assertEquals("eine milliarde", NumberToGermanEngine(1_000_000_000).numberToWords())
+        assertEquals("neun milliarden", NumberToGermanEngine(9_000_000_000).numberToWords())
+
+        assertEquals("neun milliarden neunhundertneunundneunzig millionen neunhundertneunundneunzigtausendneunhundertneunundneunzig", NumberToGermanEngine(9_999_999_999).numberToWords())
+        assertEquals("neun milliarden neunundneunzig millionen neunhundertneunundneunzigtausendneunhundertneunundneunzig", NumberToGermanEngine(9_099_999_999).numberToWords())
+        assertEquals("neun milliarden neunhundertneun millionen neunhundertneunundneunzigtausendneunhundertneunundneunzig", NumberToGermanEngine(9_909_999_999).numberToWords())
+        assertEquals("neun milliarden neunhundertneunzig millionen neunhundertneunundneunzigtausendneunhundertneunundneunzig", NumberToGermanEngine(9_990_999_999).numberToWords())
+    }
+
+    @Test
+    fun trillions () {
+        assertEquals("eine billion neunhundertneunundneunzig milliarden neunhundertneunundneunzig millionen neunhundertneunundneunzigtausendneunhundertneunundneunzig", NumberToGermanEngine(1_999_999_999_999).numberToWords())
+
+        assertEquals("neun billionen neunhundertneunundneunzig milliarden neunhundertneunundneunzig millionen neunhundertneunundneunzigtausendneunhundertneunundneunzig", NumberToGermanEngine(9_999_999_999_999).numberToWords())
+        assertEquals("neun billionen neunundneunzig milliarden neunhundertneunundneunzig millionen neunhundertneunundneunzigtausendneunhundertneunundneunzig", NumberToGermanEngine(9_099_999_999_999).numberToWords())
+        assertEquals("neun billionen neunhundertneun milliarden neunhundertneunundneunzig millionen neunhundertneunundneunzigtausendneunhundertneunundneunzig", NumberToGermanEngine(9_909_999_999_999).numberToWords())
+        assertEquals("neun billionen neunhundertneunzig milliarden neunhundertneunundneunzig millionen neunhundertneunundneunzigtausendneunhundertneunundneunzig", NumberToGermanEngine(9_990_999_999_999).numberToWords())
+    }
+
+    @Test
+    fun randomInput() {
+        assertEquals("drei billionen dreihundertdreiunddreißig milliarden dreihundertdreiunddreißig millionen dreihundertdreiunddreißigtausenddreihundertdreiunddreißig", NumberToGermanEngine(3_333_333_333_333).numberToWords())
     }
  }
