@@ -1,7 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.kodcha.num.german.NumberToGermanEngineTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2022-06-06T13:54:50" hostname="Suras-Mac-mini.local" time="0.016">
+<testsuite name="com.kodcha.num.german.NumberToGermanEngineTest" tests="19" skipped="0" failures="0" errors="0" timestamp="2022-06-07T14:19:36" hostname="Suras-Mac-mini.local" time="0.033">
   <properties/>
-  <testcase name="randomInput()" classname="com.kodcha.num.german.NumberToGermanEngineTest" time="0.016"/>
+  <testcase name="tenToNineteen()" classname="com.kodcha.num.german.NumberToGermanEngineTest" time="0.011"/>
+  <testcase name="ninetyToNinetyNine()" classname="com.kodcha.num.german.NumberToGermanEngineTest" time="0.003"/>
+  <testcase name="millions()" classname="com.kodcha.num.german.NumberToGermanEngineTest" time="0.005"/>
+  <testcase name="zeroToNine()" classname="com.kodcha.num.german.NumberToGermanEngineTest" time="0.001"/>
+  <testcase name="oneHundredToNineHundred()" classname="com.kodcha.num.german.NumberToGermanEngineTest" time="0.001"/>
+  <testcase name="tenThousands()" classname="com.kodcha.num.german.NumberToGermanEngineTest" time="0.001"/>
+  <testcase name="eightyToEightyNine()" classname="com.kodcha.num.german.NumberToGermanEngineTest" time="0.001"/>
+  <testcase name="sixtyToSixtyNine()" classname="com.kodcha.num.german.NumberToGermanEngineTest" time="0.0"/>
+  <testcase name="randomInput()" classname="com.kodcha.num.german.NumberToGermanEngineTest" time="0.001"/>
+  <testcase name="fortyToFortyNine()" classname="com.kodcha.num.german.NumberToGermanEngineTest" time="0.0"/>
+  <testcase name="trillions()" classname="com.kodcha.num.german.NumberToGermanEngineTest" time="0.001"/>
+  <testcase name="thirtyToThirtyNine()" classname="com.kodcha.num.german.NumberToGermanEngineTest" time="0.0"/>
+  <testcase name="twentyToTwentyNine()" classname="com.kodcha.num.german.NumberToGermanEngineTest" time="0.001"/>
+  <testcase name="hundredThousands()" classname="com.kodcha.num.german.NumberToGermanEngineTest" time="0.001"/>
+  <testcase name="thousands()" classname="com.kodcha.num.german.NumberToGermanEngineTest" time="0.002"/>
+  <testcase name="seventyToSeventyNine()" classname="com.kodcha.num.german.NumberToGermanEngineTest" time="0.0"/>
+  <testcase name="billions()" classname="com.kodcha.num.german.NumberToGermanEngineTest" time="0.0"/>
+  <testcase name="fiftyToFiftyNine()" classname="com.kodcha.num.german.NumberToGermanEngineTest" time="0.0"/>
+  <testcase name="zeroToNineWithLeadingZero()" classname="com.kodcha.num.german.NumberToGermanEngineTest" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
